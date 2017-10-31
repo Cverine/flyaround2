@@ -20,8 +20,8 @@
             <tr>
                 <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td>{{ reservation.nbReservedSeats }}</td>
-                <td>{{ reservation.publicationDate }}</td>
-                <td>{{ reservation.passenger }}</td>
+                <td>{{ reservation.publicationDate|date('Y-m-d H:i:s') }}</td>
+                <td>{#{  reservation.passenger }#}</td>
                 <td>{{ reservation.flight }}</td>
                 <td>{% if reservation.wasDone %}Yes{% else %}No{% endif %}</td>
                 <td>

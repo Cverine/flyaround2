@@ -85,9 +85,8 @@ class User
     private $note;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="reviews", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Review", mappedBy="reviewAuthors")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $reviews;
 
@@ -478,5 +477,10 @@ class User
     public function getFlight()
     {
         return $this->flight;
+    }
+
+    public function __toString()
+    {
+        return $this->userName . " " . $this->lastName;
     }
 }

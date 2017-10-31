@@ -31,7 +31,7 @@ class Reservation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publicationDate", type="datetimetz")
+     * @ORM\Column(name="publicationDate", type="datetime")
      */
     private $publicationDate;
 
@@ -42,7 +42,8 @@ class Reservation
     private $passengers;
 
     /**
-     * @ORM\OneToOne(targetEntity="WCS\CoavBundle\Entity\Flight", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $flight;
 
@@ -115,13 +116,13 @@ class Reservation
     /**
      * Set passenger
      *
-     * @param string $passenger
+     * @param string $passengers
      *
      * @return Reservation
      */
-    public function setPassenger($passenger)
+    public function setPassenger($passengers)
     {
-        $this->passenger = $passenger;
+        $this->passengers = $passengers;
 
         return $this;
     }
@@ -133,7 +134,7 @@ class Reservation
      */
     public function getPassenger()
     {
-        return $this->passenger;
+        return $this->passengers;
     }
 
     /**
@@ -194,13 +195,13 @@ class Reservation
     /**
      * Add passenger
      *
-     * @param \WCS\CoavBundle\Entity\User $passenger
+     * @param \WCS\CoavBundle\Entity\User $passengers
      *
      * @return Reservation
      */
-    public function addPassenger(\WCS\CoavBundle\Entity\User $passenger)
+    public function addPassenger(\WCS\CoavBundle\Entity\User $passengers)
     {
-        $this->passengers[] = $passenger;
+        $this->passengers[] = $passengers;
 
         return $this;
     }
@@ -208,11 +209,11 @@ class Reservation
     /**
      * Remove passenger
      *
-     * @param \WCS\CoavBundle\Entity\User $passenger
+     * @param \WCS\CoavBundle\Entity\User $passengers
      */
-    public function removePassenger(\WCS\CoavBundle\Entity\User $passenger)
+    public function removePassenger(\WCS\CoavBundle\Entity\User $passengers)
     {
-        $this->passengers->removeElement($passenger);
+        $this->passengers->removeElement($passengers);
     }
 
     /**
@@ -224,4 +225,9 @@ class Reservation
     {
         return $this->passengers;
     }
+
+    public function __toString()
+    {
+        return $this->id . " " . $this->flight;
+}
 }

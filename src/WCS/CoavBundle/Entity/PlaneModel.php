@@ -233,4 +233,9 @@ class PlaneModel
     {
         return $this->flights;
     }
+
+    public function __toString()
+    {
+        return $this->model . " " . $this->manufacturer . " " . $this->cruiseSpeed . " " . $this->planeNbSeats . " " . $this->isAvailable;
+    }
 }

@@ -15,12 +15,12 @@
             </tr>
             <tr>
                 <th>Publicationdate</th>
-                <td>{{ reservation.publicationDate }}</td>
+                <td>{{ reservation.publicationDate|date('Y-m-d H:i:s') }}</td>
             </tr>
-            <tr>
+         <!--   <tr>
                 <th>Passenger</th>
-                <td>{{ reservation.passenger }}</td>
-            </tr>
+                <td>{#{ reservation.passengers }#}</td>
+            </tr>  -->
             <tr>
                 <th>Flight</th>
                 <td>{{ reservation.flight }}</td>

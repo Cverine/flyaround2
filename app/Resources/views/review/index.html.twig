@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reviews list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Text</th>
+            <th>Publication Date</th>
+            <th>Note</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td><a href="{{ path('review_show', { 'id': review.id }) }}">{{ review.id }}</a></td>
+                <td>{{ review.text }}</td>
+                <td>{{ review.publicationDate }}</td>
+                <td>{{ review.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('review_new') }}">Add a new review</a>
+        </li>
+    </ul>
+{% endblock %}

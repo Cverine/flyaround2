@@ -336,4 +336,9 @@ class Flight
     {
         return $this->wasDone;
     }
+
+    public function __toString()
+    {
+        return $this->nbFreeSeats . " " . $this->description;
+    }
 }
